@@ -1,27 +1,48 @@
-import { client, getToken } from './api/client'
+import { client, getData, getToken } from './api/client'
 import { useEffect, useState } from 'react'
+import { IResponseData } from './api/client.interface'
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem('jwt'))
+  const [token, setToken] = useState(sessionStorage.getItem('jwt'))
+  const [data, setData] = useState<IResponseData | null>(null)
 
   // effect for token management
   useEffect(() => {
     const manageToken = async () => {
-      console.log('manageToken runs')
       try {
+        console.log('getting token')
         const response = await getToken()
-        localStorage.setItem('jwt', response.token)
+        sessionStorage.setItem('jwt', response.token)
         setToken(response.token)
+        client.defaults.headers.common['Token'] = response.token
       } catch (error) {
         // TODO: handle token related error cases
         console.error(error)
       }
     }
     if (token) {
-      client.defaults.headers.common['Token'] = token
+      // TODO: should check token validity / expiration possibly using jwt-decode lib
+      console.log('we got token')
       return
     }
     manageToken()
+  }, [token])
+
+  // effect for fetching data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getData()
+        console.log(response)
+        setData(response)
+      } catch (error) {
+        // TODO: handle data fetching related error cases
+        console.error(error)
+      }
+    }
+    if (token) {
+      fetchData()
+    }
   }, [token])
   return (
     <>

@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { ITokenResponse } from './client.interface'
+import { IResponseData, ITokenResponse } from './client.interface'
 
 // base axios instance
 export const client = axios.create({
@@ -32,4 +32,35 @@ export const getToken = async (): Promise<ITokenResponse> => {
     },
   }
   return await clientRequest<ITokenResponse>(config)
+}
+
+export const getData = async (): Promise<IResponseData> => {
+  const config: AxiosRequestConfig = {
+    method: 'POST',
+    url: '/affairs',
+    data: {
+      query: `query {
+                    getData {
+                      affairs
+                      gender
+                      age
+                      yearsmarried
+                      children
+                      religiousness
+                      education
+                      occupation
+                      rating
+                    }
+                }`,
+    },
+    transformResponse: [
+      function (data) {
+        const json = JSON.parse(data)
+        data = json.data.getData
+        return data
+      },
+    ],
+  }
+
+  return await clientRequest<IResponseData>(config)
 }
