@@ -1,6 +1,8 @@
 import { client, getData, getToken } from './api/client'
 import { useEffect, useState } from 'react'
 import { IResponseData } from './api/client.interface'
+import PieChartChildren from './components/charts/pie-chart-children'
+import PieChartGender from './components/charts/pie-chart-gender'
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('jwt'))
@@ -25,7 +27,11 @@ function App() {
       console.log('we got token')
       return
     }
-    manageToken()
+
+    /* temporarily disable token management --
+     we use already fetched mock data to
+     create and test charts */
+    // manageToken()
   }, [token])
 
   // effect for fetching data
@@ -47,6 +53,8 @@ function App() {
   return (
     <>
       <h1>Dashboard</h1>
+      <PieChartChildren />
+      <PieChartGender />
     </>
   )
 }

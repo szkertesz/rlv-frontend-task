@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     affairs: 0,
     gender: 'male',
