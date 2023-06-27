@@ -18,6 +18,9 @@ let theme = createTheme({
     // maximize the contrast between
     // the background and the text.
     contrastThreshold: 4.5,
+    background: {
+      paper: '#f6f8fc',
+    },
   },
 })
 

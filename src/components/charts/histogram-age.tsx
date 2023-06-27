@@ -7,8 +7,10 @@ import {
   Tooltip,
   Legend,
   Label,
+  ResponsiveContainer,
   // ResponsiveContainer,
 } from 'recharts'
+import { red, blue } from '@mui/material/colors'
 import { data as populationData } from '../../assets/data'
 
 const AgeHistogram = () => {
@@ -35,21 +37,21 @@ const AgeHistogram = () => {
   }
 
   return (
-    // <ResponsiveContainer>
-    <BarChart width={600} height={400} data={histogramData}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="range">
-        <Label value="Age" offset={0} position="insideBottom" />
-      </XAxis>
-      <YAxis>
-        <Label value="Count" offset={0} position="insideLeft" angle={-90} />
-      </YAxis>
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="male" stackId="a" fill="blue" />
-      <Bar dataKey="female" stackId="a" fill="pink" />
-    </BarChart>
-    // </ResponsiveContainer>
+    <ResponsiveContainer width="100%" height={480}>
+      <BarChart data={histogramData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="range">
+          <Label value="Age" offset={0} position="insideBottom" />
+        </XAxis>
+        <YAxis>
+          <Label value="Count" offset={0} position="insideLeft" angle={-90} />
+        </YAxis>
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="male" stackId="a" fill={blue[500]} />
+        <Bar dataKey="female" stackId="a" fill={red[500]} />
+      </BarChart>
+    </ResponsiveContainer>
   )
 }
 

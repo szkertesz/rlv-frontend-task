@@ -1,4 +1,11 @@
-import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts'
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
 import { data as populationData } from '../../assets/data'
 
 type TLevel = { [key: string]: number }
@@ -35,24 +42,27 @@ const ReligiousPieChart = () => {
   ]
 
   return (
-    <PieChart width={400} height={400}>
-      <Pie
-        dataKey="freq"
-        data={pieData}
-        cx={200}
-        cy={200}
-        innerRadius={32}
-        outerRadius={80}
-        fill="#8884d8"
-        nameKey="level"
-      >
-        {pieData.map((_entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-        ))}
-      </Pie>
-      <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-      <Legend verticalAlign="bottom" align="center" />
-    </PieChart>
+    <ResponsiveContainer width="100%" height={340}>
+      <PieChart width={240} height={340}>
+        <Pie
+          dataKey="freq"
+          data={pieData}
+          cx={160}
+          cy={150}
+          innerRadius={48}
+          outerRadius={120}
+          fill="#8884d8"
+          nameKey="level"
+          label
+        >
+          {pieData.map((_entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          ))}
+        </Pie>
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+        <Legend verticalAlign="bottom" align="center" />
+      </PieChart>
+    </ResponsiveContainer>
   )
 }
 

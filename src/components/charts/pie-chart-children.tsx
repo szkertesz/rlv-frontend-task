@@ -1,4 +1,14 @@
-import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts'
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
+
+import { lightGreen, orange } from '@mui/material/colors'
+
 import { IResponseData } from '../../api/client.interface'
 import { data } from '../../assets/data'
 
@@ -11,30 +21,32 @@ const ChildrenPieChart = () => {
   const countWithoutChildren = populationData.length - countWithChildren
 
   const pieData = [
-    { name: 'With Children', value: countWithChildren },
-    { name: 'Without Children', value: countWithoutChildren },
+    { name: 'Has Child', value: countWithChildren },
+    { name: 'Has no Child', value: countWithoutChildren },
   ]
 
-  const colors = ['#8884d8', '#82ca9d']
+  const colors = [orange[500], lightGreen[500]]
 
   return (
-    <PieChart width={400} height={400}>
-      <Pie
-        dataKey="value"
-        data={pieData}
-        cx={200}
-        cy={200}
-        outerRadius={80}
-        fill="#8884d8"
-        label
-      >
-        {pieData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-        ))}
-      </Pie>
-      <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-      <Legend verticalAlign="bottom" align="center" />
-    </PieChart>
+    <ResponsiveContainer width="100%" height={340}>
+      <PieChart width={240} height={340}>
+        <Pie
+          dataKey="value"
+          data={pieData}
+          cx={170}
+          cy={150}
+          outerRadius={120}
+          fill="#8884d8"
+          label
+        >
+          {pieData.map((_entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          ))}
+        </Pie>
+        <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+        <Legend verticalAlign="bottom" align="center" />
+      </PieChart>
+    </ResponsiveContainer>
   )
 }
 
