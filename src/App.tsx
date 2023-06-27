@@ -6,6 +6,7 @@ import GenderPieChart from './components/charts/pie-chart-gender'
 import AgeHistogram from './components/charts/histogram-age'
 import EducationRatingScatterPlot from './components/charts/scatter-plot-edu-rating'
 import ReligiousPieChart from './components/charts/pie-chart-religiousnes'
+import { Typography } from '@mui/material'
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('jwt'))
@@ -55,7 +56,7 @@ function App() {
   }, [token])
   return (
     <>
-      <h1>Dashboard</h1>
+      <Typography variant="h1">Dashboard</Typography>
       <ChildrenPieChart />
       <GenderPieChart />
       <ReligiousPieChart />
