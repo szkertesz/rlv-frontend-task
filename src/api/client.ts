@@ -34,7 +34,7 @@ export const getToken = async (): Promise<ITokenResponse> => {
   return await clientRequest<ITokenResponse>(config)
 }
 
-export const getData = async (): Promise<IResponseData> => {
+export const getData = async (): Promise<IResponseData[]> => {
   const config: AxiosRequestConfig = {
     method: 'POST',
     url: '/affairs',

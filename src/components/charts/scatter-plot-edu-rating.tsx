@@ -8,13 +8,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-
 import { red, blue } from '@mui/material/colors'
+import { IChartProps } from './chart-props.interface'
 
-import { data as populationData } from '../../assets/data'
-
-const EducationRatingScatterPlot = () => {
-  const data = populationData.map(person => ({
+const EducationRatingScatterPlot = ({ chartdata }: IChartProps) => {
+  const data = chartdata.map(person => ({
     rating: person.rating,
     education: person.education,
     gender: person.gender,

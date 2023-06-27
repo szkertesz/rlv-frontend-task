@@ -11,17 +11,17 @@ import {
   // ResponsiveContainer,
 } from 'recharts'
 import { red, blue } from '@mui/material/colors'
-import { data as populationData } from '../../assets/data'
+import { IChartProps } from './chart-props.interface'
 
-const AgeHistogram = () => {
-  const ageData = populationData.map(person => person.age)
+const AgeHistogram = ({ chartdata }: IChartProps) => {
+  const ageData = chartdata.map(person => person.age) as number[]
   const range = 10
   const histogramData = []
 
   for (let i = 0; i < Math.ceil(Math.max(...ageData) / range); i++) {
     const rangeStart = i * range
     const rangeEnd = rangeStart + range
-    const populationRangeByAge = populationData.filter(
+    const populationRangeByAge = chartdata.filter(
       person => person.age >= rangeStart && person.age < rangeEnd
     )
     const maleCount = populationRangeByAge.filter(

@@ -7,16 +7,11 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 import { red, blue } from '@mui/material/colors'
-import { IResponseData } from '../../api/client.interface'
-import { data } from '../../assets/data'
+import { IChartProps } from './chart-props.interface'
 
-const GenderPieChart = () => {
-  const populationData: IResponseData[] = data
-
-  const countMale = populationData.filter(
-    person => person.gender === 'male'
-  ).length
-  const countFemale = populationData.length - countMale
+const GenderPieChart = ({ chartdata }: IChartProps) => {
+  const countMale = chartdata.filter(person => person.gender === 'male').length
+  const countFemale = chartdata.length - countMale
 
   const pieData = [
     { name: 'Male', value: countMale },

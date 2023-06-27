@@ -6,12 +6,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-import { data as populationData } from '../../assets/data'
+import { IChartProps } from './chart-props.interface'
 
 type TLevel = { [key: string]: number }
 
-const ReligiousPieChart = () => {
-  const religionData = populationData.map(person => person.religiousness)
+const ReligiousPieChart = ({ chartdata }: IChartProps) => {
+  const religionData = chartdata.map(person => person.religiousness)
   const pieData = []
 
   // count frequnecies of the different religiosness levels

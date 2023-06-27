@@ -6,19 +6,15 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-
 import { lightGreen, orange } from '@mui/material/colors'
+import { IChartProps } from './chart-props.interface'
 
-import { IResponseData } from '../../api/client.interface'
-import { data } from '../../assets/data'
-
-const ChildrenPieChart = () => {
-  const populationData: IResponseData[] = data
-
-  const countWithChildren = populationData.filter(
+const ChildrenPieChart = ({ chartdata }: IChartProps) => {
+  console.log(chartdata)
+  const countWithChildren = chartdata.filter(
     person => person.children === 'yes'
   ).length
-  const countWithoutChildren = populationData.length - countWithChildren
+  const countWithoutChildren = chartdata.length - countWithChildren
 
   const pieData = [
     { name: 'Has Child', value: countWithChildren },
