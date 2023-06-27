@@ -58,9 +58,9 @@ function App() {
       <h1>Dashboard</h1>
       <ChildrenPieChart />
       <GenderPieChart />
+      <ReligiousPieChart />
       <AgeHistogram />
       <EducationRatingScatterPlot />
-      <ReligiousPieChart />
     </>
   )
 }

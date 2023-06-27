@@ -23,15 +23,33 @@ const EducationRatingScatterPlot = () => {
 
   return (
     <ScatterChart
-      width={500}
-      height={300}
-      margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
+      width={600}
+      height={400}
+      // margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis type="number" dataKey="education" name="Education" />
-      <YAxis type="number" dataKey="rating" name="Rating" />
+      <XAxis
+        type="number"
+        dataKey="education"
+        name="Education"
+        label={{
+          value: 'Education indices',
+          position: 'insideBottom',
+          offset: 0,
+        }}
+      />
+      <YAxis
+        type="number"
+        dataKey="rating"
+        name="Rating"
+        label={{
+          value: 'Rating scores',
+          angle: -90,
+          position: 'insideLeft',
+        }}
+      />
       <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-      <Legend />
+      <Legend height={40} verticalAlign="bottom" />
       {Object.keys(colors).map(gender => (
         <Scatter
           key={gender}

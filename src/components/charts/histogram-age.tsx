@@ -42,7 +42,7 @@ const AgeHistogram = () => {
         <Label value="Age" offset={0} position="insideBottom" />
       </XAxis>
       <YAxis>
-        <Label value="Count" offset={0} position="insideLeft" />
+        <Label value="Count" offset={0} position="insideLeft" angle={-90} />
       </YAxis>
       <Tooltip />
       <Legend />
