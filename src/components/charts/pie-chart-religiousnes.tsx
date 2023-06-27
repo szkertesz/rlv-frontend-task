@@ -5,17 +5,17 @@ type TLevel = { [key: string]: number }
 
 const ReligiousPieChart = () => {
   const religionData = populationData.map(person => person.religiousness)
-  const levels: TLevel = {}
   const pieData = []
 
   // count frequnecies of the different religiosness levels
-  for (const item of religionData) {
+  const levels = religionData.reduce((acc: TLevel, item) => {
     const key = String(item)
-    if (levels[key] === undefined) {
-      levels[key] = 0
+    if (acc[key] === undefined) {
+      acc[key] = 0
     }
-    levels[key]++
-  }
+    acc[key]++
+    return acc
+  }, {})
   // transform data for the pie chart
   for (const level in levels) {
     pieData.push({
