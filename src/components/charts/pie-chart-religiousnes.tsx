@@ -16,6 +16,7 @@ const ReligiousPieChart = () => {
     acc[key]++
     return acc
   }, {})
+
   // transform data for the pie chart
   for (const level in levels) {
     pieData.push({
@@ -40,10 +41,10 @@ const ReligiousPieChart = () => {
         data={pieData}
         cx={200}
         cy={200}
-        innerRadius={324}
+        innerRadius={32}
         outerRadius={80}
         fill="#8884d8"
-        label
+        nameKey="level"
       >
         {pieData.map((_entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
