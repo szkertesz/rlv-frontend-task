@@ -12,6 +12,8 @@ import AgeHistogram from './components/charts/histogram-age'
 import EducationRatingScatterPlot from './components/charts/scatter-plot-edu-rating'
 import ReligiousPieChart from './components/charts/pie-chart-religiousnes'
 import ChartBox from './components/ui/ChartBox'
+import Header from './components/ui/Header'
+import Sidebar from './components/ui/Sidebar'
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('jwt'))
@@ -61,8 +63,10 @@ function App() {
   }, [token])
   return (
     <>
-      <Container>
-        <Paper elevation={1} sx={{ padding: 2 }}>
+      <Header />
+      <Sidebar />
+      <Container sx={{ pt: 12 }}>
+        <Paper elevation={0} sx={{ padding: 2 }}>
           <Typography variant="h2" component="h1" mb={3}>
             Dashboard
           </Typography>

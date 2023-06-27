@@ -19,7 +19,7 @@ let theme = createTheme({
     // the background and the text.
     contrastThreshold: 4.5,
     background: {
-      paper: '#f6f8fc',
+      // paper: '#f6f8fc',
     },
   },
 })
