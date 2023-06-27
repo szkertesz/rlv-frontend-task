@@ -1,8 +1,8 @@
-import { PieChart, Pie, Cell, Legend } from 'recharts'
+import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts'
 import { IResponseData } from '../../api/client.interface'
 import { data } from '../../assets/data'
 
-const PieChartChildren = () => {
+const ChildrenPieChart = () => {
   const populationData: IResponseData[] = data
 
   const countWithChildren = populationData.filter(
@@ -32,9 +32,10 @@ const PieChartChildren = () => {
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
       </Pie>
+      <Tooltip cursor={{ strokeDasharray: '3 3' }} />
       <Legend verticalAlign="bottom" align="center" />
     </PieChart>
   )
 }
 
-export default PieChartChildren
+export default ChildrenPieChart
