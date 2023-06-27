@@ -1,8 +1,11 @@
 import { client, getData, getToken } from './api/client'
 import { useEffect, useState } from 'react'
 import { IResponseData } from './api/client.interface'
-import PieChartChildren from './components/charts/pie-chart-children'
-import PieChartGender from './components/charts/pie-chart-gender'
+import ChildrenPieChart from './components/charts/pie-chart-children'
+import GenderPieChart from './components/charts/pie-chart-gender'
+import AgeHistogram from './components/charts/histogram-age'
+import EducationRatingScatterPlot from './components/charts/scatter-plot-edu-rating'
+import ReligiousPieChart from './components/charts/pie-chart-religiousnes'
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('jwt'))
@@ -53,8 +56,11 @@ function App() {
   return (
     <>
       <h1>Dashboard</h1>
-      <PieChartChildren />
-      <PieChartGender />
+      <ChildrenPieChart />
+      <GenderPieChart />
+      <AgeHistogram />
+      <EducationRatingScatterPlot />
+      <ReligiousPieChart />
     </>
   )
 }
