@@ -26,7 +26,6 @@ function App() {
     const manageToken = async () => {
       setIsError(false)
       try {
-        console.log('getting token')
         const response = await getToken()
         setToken(response.token)
         client.defaults.headers.common['Token'] = response.token
@@ -39,7 +38,7 @@ function App() {
     }
     if (token) {
       // TODO: should check token validity / expiration possibly using jwt-decode lib
-      console.log('we got token')
+      client.defaults.headers.common['Token'] = token
       return
     }
     manageToken()
@@ -76,11 +75,11 @@ function App() {
             <p>
               Something went wrong ...
               <br />
-              Check the console for details
+              <small>Check the console for details</small>
             </p>
           )}
 
-          {isLoading && <div>Loading ...</div>}
+          {isLoading && <p>Loading ...</p>}
 
           {!isLoading && data && (
             <Grid container spacing={4}>
@@ -90,7 +89,7 @@ function App() {
                 </ChartBox>
               </Grid>
               <Grid xs={12} md={4}>
-                <ChartBox title="Gender">
+                <ChartBox title="Population by gender">
                   <GenderPieChart chartdata={data} />
                 </ChartBox>
               </Grid>

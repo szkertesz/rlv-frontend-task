@@ -62,5 +62,5 @@ export const getData = async (): Promise<IResponseData[]> => {
     ],
   }
 
-  return await clientRequest<IResponseData>(config)
+  return await clientRequest<IResponseData[]>(config)
 }
