@@ -17,6 +17,9 @@ import Sidebar from './components/ui/Sidebar'
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('jwt'))
+  // since the component structure is quite flat
+  // we chose not to use context API to store fetched data, but
+  // local state + passing data by props here:
   const [data, setData] = useState<IResponseData[] | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
