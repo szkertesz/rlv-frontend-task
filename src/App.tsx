@@ -99,7 +99,7 @@ function App() {
                 </ChartBox>
               </Grid>
               <Grid xs={12} md={6}>
-                <ChartBox title="Age and gender">
+                <ChartBox title="Age groups and gender">
                   <AgeHistogram chartdata={data} />
                 </ChartBox>
               </Grid>
